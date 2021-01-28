@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 import logo from './logo.svg';
 import './App.css';
+
 
 const ALLCATEGORIESURL = 'https://api.chucknorris.io/jokes/categories'
 const RANDOMJOKEBYCATURL = 'https://api.chucknorris.io/jokes/random?category=' // remember to fill this
@@ -44,6 +45,8 @@ const Joke = ({ value, categories }) => {
 
 // class App extends React.Component {
 function App() {
+  const [inputText, setInputText] = useState('')
+
   // qui tutto ciò che serve al componente per essere inizializzato
 
   // getAllCategories
@@ -74,7 +77,9 @@ function App() {
           <input
             type="search"
             id="search" name="search"
+            value={inputText}
             placeholder="Enter keyword here"
+            onChange={event => setInputText(event.target.value)}
             // ...
           />
           <button
@@ -111,7 +116,7 @@ function App() {
           {/* <Joke ... /> */}
         </div>
         <div className="footer">
-        <code>Esame di React per cfp-futura. Grazie ad <a href="https://api.chucknorris.io">api.chucknorris.io</a> per l'immagine e le api. Docente: Vito Vitale. Studente: </code>
+        <code>Esame di React per cfp-futura. Grazie ad <a href="https://api.chucknorris.io">api.chucknorris.io</a> per l'immagine e le api. Docente: Vito Vitale. Studente: Palazzo Barbara</code>
         </div>
       </div>
     );
